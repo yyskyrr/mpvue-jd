@@ -1,28 +1,26 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <Index/>
+    <!-- <Detail/> -->
+    <!-- <Confirm/> -->
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+/* eslint-disable */
+import Index from "./components/index.vue";
+import Detail from "./components/detail.vue";
+import Confirm from "./components/confirm.vue";
 
 export default {
   name: "App",
   components: {
-    HelloWorld,
+    Index,
+    Detail,
+    Confirm,
   },
 };
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>
