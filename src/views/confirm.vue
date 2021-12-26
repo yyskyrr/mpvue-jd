@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <van-nav-bar title="确认订单" left-arrow />
+    <van-nav-bar title="确认订单" left-arrow @click-left="$router.back()" />
 
     <van-cell center is-link>
       <template #title>

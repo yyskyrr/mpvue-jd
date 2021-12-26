@@ -44,7 +44,11 @@
     <van-swipe class="my-swipe-item" indicator-color="black">
       <van-swipe-item>
         <div>
-          <img v-for="i in 10" :key="i" :src="require(`../assets/index/${i}.jpg`)" />
+          <img
+            v-for="i in 10"
+            :key="i"
+            :src="require(`../assets/index/${i}.jpg`)"
+          />
         </div>
       </van-swipe-item>
       <van-swipe-item>
@@ -74,6 +78,7 @@
         </div>
         <div class="top-content">
           <img
+            @click="$router.push('/detail')"
             v-for="i in 7"
             :key="i"
             :src="require(`../assets/index/top${i}.jpg`)"
@@ -168,10 +173,10 @@ export default {};
 <style lang="less">
 .main {
   background: #f4f4f4;
-  .header{
-      position: sticky;
-      top: 0;
-      z-index: 999;
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 999;
   }
 }
 .my-swipe {
