@@ -284,16 +284,16 @@ export default {
   flex-wrap: wrap;
   div {
     box-sizing: border-box;
-    padding: 5px;
+    padding: 12px;
     position: relative;
     width: 20%;
     text-align: center;
   }
   img {
-    height: 60px;
+    height: 40px;
   }
   span {
-    position: relative;
+    font-size: 0.7rem;
   }
 }
 .van-tabs__nav {
