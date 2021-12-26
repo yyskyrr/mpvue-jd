@@ -2,12 +2,12 @@
   <div class="main">
     <van-nav-bar title="确认订单" left-arrow @click-left="$router.back()" />
 
-    <van-cell center is-link>
+    <van-cell center is-link class="address-border">
       <template #title>
         <van-tag style="margin-right: 10px" type="danger">默认</van-tag>
         <van-tag style="margin-right: 10px" type="primary">家</van-tag>
         <span class="custom-title">浙江省杭州市滨江区</span>
-        <div>兴五路华盛顿小区</div>
+        <b style="display: block">兴五路华盛顿小区</b>
         <div>张三 188****1951</div>
       </template>
     </van-cell>
@@ -94,6 +94,13 @@ export default {};
   overflow: auto;
   background: #f5f5f5;
 }
+.address-border {
+  padding-bottom: 10px;
+  background: #fff
+    url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAAAKBAMAAACOO0tGAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAqUExURf///4u16OxtbZ3B7Ozz/PjDw9Dh9vSmprjS8vDm7e57e/GNjfvd3f7w8AXfhcMAAABSSURBVCjPY2CAAFYl7CAAKs+QKIgViMHkD2HXrw6TZ8GuX7ABKs+7CLsBG2AGOGPXLwyT58auX+sCTIEhdgNMYPJF2A3Qgclz4PCBw2gQUiMIAenMONnjpCz0AAAAAElFTkSuQmCC) -7px
+    bottom repeat-x;
+  background-size: 64px 5px;
+}
 .top {
   margin-top: 10px;
 }
@@ -116,7 +123,7 @@ export default {};
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-      width: 67%;
+    width: 67%;
 
     .titel {
       overflow: hidden;

@@ -7,10 +7,11 @@
         placeholder="请输入搜索关键词"
         show-action
       >
+        <template #left-icon>
+          <img src="..\assets\index\search.jpg" alt="" />
+        </template>
         <template #right-icon>
-          <div>
-            <img src="..\assets\index\camera.jpg" alt="" />
-          </div>
+          <img src="..\assets\index\camera.jpg" alt="" />
         </template>
         <template #action>
           <img src="..\assets\index\huiben.jpg" alt="" />
@@ -43,75 +44,75 @@
 
     <van-swipe class="my-swipe-item" indicator-color="black">
       <van-swipe-item>
-        <div>
-          <img
-            v-for="i in 10"
-            :key="i"
-            :src="require(`../assets/index/${i}.jpg`)"
-          />
+        <div v-for="i in 10" :key="i">
+          <img :src="require(`../assets/index/${i}.jpg`)" />
+          <span>{{ titleList[i] }}</span>
         </div>
       </van-swipe-item>
       <van-swipe-item>
-        <div>
-          <img
-            v-for="i in 10"
-            :key="i"
-            :src="require(`../assets/index/${i + 10}.jpg`)"
-          />
+        <div v-for="i in 10" :key="i">
+          <img :src="require(`../assets/index/${i + 10}.jpg`)" />
+          <span>{{ titleList[i + 10] }}</span>
         </div>
       </van-swipe-item>
       <van-swipe-item>
-        <div>
-          <img
-            v-for="i in 10"
-            :key="i"
-            :src="require(`../assets/index/${i + 20}.jpg`)"
-          />
+        <div v-for="i in 10" :key="i">
+          <img :src="require(`../assets/index/${i + 20}.jpg`)" />
+          <span>{{ titleList[i + 20] }}</span>
         </div>
       </van-swipe-item>
     </van-swipe>
-    <div class="top-card">
-      <div class="top">
-        <div class="top-header">
-          <span>京东秒杀</span>
-          <span> 更多好货限时疯抢 > </span>
-        </div>
-        <div class="top-content">
-          <img
-            @click="$router.push('/detail')"
-            v-for="i in 7"
-            :key="i"
-            :src="require(`../assets/index/top${i}.jpg`)"
-          />
-        </div>
-      </div>
-      <div class="middle">
-        <img
-          v-for="i in 4"
-          :key="i"
-          :src="require(`../assets/index/middle${i}.jpg`)"
-        />
-      </div>
-      <div class="bottom">
-        <div class="bottom-header">
-          <span>东家小院</span>
-          <span>京东直播</span>
-        </div>
-        <div class="bottom-content">
-          <img
-            v-for="i in 4"
-            :key="i"
-            :src="require(`../assets/index/bottom${i}.jpg`)"
-          />
-        </div>
-      </div>
-    </div>
     <div class="middle-card">
       <img src="../assets/index/middle.jpg" alt="" />
     </div>
+    <div class="top-card">
+      <van-cell title="京东秒杀" is-link value="更多好货限时疯抢" />
+      <div class="top">
+        <div class="top-content">
+          <div v-for="i in 7" :key="i">
+            <img
+              style="height: 80px"
+              :src="require(`../assets/index/top${i}.jpg`)"
+            />
+            <span>￥{{ priceList[i - 1] }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="middle">
+        <div v-for="i in 4" :key="i">
+          <div>{{ bookList[i - 1].title1 }}</div>
+          <span
+            style="font-size: 10px"
+            :style="'color:' + bookList[i - 1].color"
+            >{{ bookList[i - 1].title2 }}</span
+          >
+          <img :src="require(`../assets/index/middle${i}.jpg`)" />
+        </div>
+      </div>
+      <div class="bottom">
+        <div class="card">
+          <div v-for="i in 2" :key="i">
+            <div>{{ cardList[i - 1] }}</div>
+
+            <img :src="require(`../assets/index/bottom${i}.jpg`)" />
+          </div>
+        </div>
+        <div class="card">
+          <div v-for="i in 2" :key="i">
+            <div>{{ cardList[i + 1] }}</div>
+            <img :src="require(`../assets/index/bottom${i + 2}.jpg`)" />
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="bottom-card">
       <div class="card-item">
-        <img src="../assets/index/bottom-card1.jpg" alt="" />
+        <img
+          @click="$router.push('/detail')"
+          src="../assets/index/bottom-card1.jpg"
+          alt=""
+        />
         <div class="text">
           <div class="van-multi-ellipsis--l2">
             vivo iQOO Neo5 SE 新上市 热血酷玩 【12月20日】
@@ -167,10 +168,99 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      bookList: [
+        {
+          title1: "品牌闪购",
+          title2: "汇大牌好价",
+          color: "#683af0",
+        },
+        {
+          title1: "排行榜",
+          title2: "跟榜购好物",
+          color: "#ff2342",
+        },
+        {
+          title1: "品牌闪购",
+          title2: "9块9疯抢",
+          color: "#fd5812",
+        },
+        {
+          title1: "品牌闪购",
+          title2: "全网抢先购",
+          color: "#4685f6",
+        },
+      ],
+      priceList: [7449, 10969, 12699, 299, 1679, 699, 580, 29.9],
+      cardList: ["京东超市", "居家嗨购", "京东直播",'主播力荐'],
+      titleList: [
+        "",
+        "京东超市",
+        "京东家电",
+        "京东服饰",
+        "京东手机",
+        "低价爆款",
+        "1元疯抢",
+        "领京豆",
+        "领优惠券",
+        "免费水果",
+        "充值中心",
+        "京东国际",
+        "视频号",
+        "潮燃青年",
+        "拍拍二手",
+        "沃尔玛",
+        "京东电器",
+        "排行榜",
+        "京东生鲜",
+        "京东到家",
+        "领现金",
+        "京东特价",
+        "女装",
+        "电脑",
+        "寄件服务",
+        "新品首发",
+        "京东试用",
+        "京东图书",
+        "发现好货",
+        "京东家居",
+        "装修定制",
+      ],
+    };
+  },
+};
 </script>
 
 <style lang="less">
+.top-content {
+  div {
+    text-align: center;
+    color: #f2270c;
+    span {
+      display: inline-block;
+      margin: 5px 0;
+    }
+  }
+}
+.van-field__right-icon {
+  img {
+    margin-right: 5px;
+    width: 20px;
+    transform: translateY(15%);
+  }
+}
+.van-field__left-icon {
+  img {
+    margin-right: 5px;
+    width: 14px;
+    transform: translateY(15%);
+  }
+}
+.van-tabs__line {
+  background-color: white;
+}
 .main {
   background: #f4f4f4;
   .header {
@@ -189,15 +279,21 @@ export default {};
     height: 150px;
   }
 }
-.my-swipe-item .van-swipe-item div {
+.my-swipe-item .van-swipe-item {
   display: flex;
   flex-wrap: wrap;
-  img {
-    height: 80px;
-    width: 50px;
-    flex: 0 0 20%;
+  div {
     box-sizing: border-box;
     padding: 5px;
+    position: relative;
+    width: 20%;
+    text-align: center;
+  }
+  img {
+    height: 60px;
+  }
+  span {
+    position: relative;
   }
 }
 .van-tabs__nav {
@@ -214,14 +310,8 @@ export default {};
   margin: 10px;
   border-radius: 15px;
   padding: 10px;
-  div {
-    flex: 0 0 33%;
-  }
+
   .top {
-    .top-header {
-      display: flex;
-      justify-content: space-between;
-    }
     .top-content {
       display: flex;
       overflow: auto;
@@ -230,18 +320,16 @@ export default {};
   .middle {
     display: flex;
     img {
-      width: 25%;
+      height: 80px;
     }
   }
   .bottom {
-    .bottom-header {
-      display: flex;
-      justify-content: space-between;
-    }
-    .bottom-content {
+    display: flex;
+    width: 100%;
+    .card {
       display: flex;
       img {
-        width: 25%;
+        width: 100%;
       }
     }
   }
